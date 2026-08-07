@@ -312,7 +312,7 @@ main {
        element's own hit-testable area is never obscured by the nav itself
        (nav panel width matches min(85vw, 340px), see .primary-nav above). */
     right: min(85vw, 340px);
-    background: var(--near-black);
+    background: hsla(0, 0%, 8%, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -320,7 +320,7 @@ main {
   }
 
   .overlay.show {
-    opacity: 0.5;
+    opacity: 1;
     visibility: visible;
   }
 
