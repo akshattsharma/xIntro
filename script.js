@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeAllDropdowns() {
     document.querySelectorAll('.dropdown-list.show').forEach(list => list.classList.remove('show'));
+    document.querySelectorAll('.nav-link.link-open').forEach(li => li.classList.remove('link-open'));
     dropdownToggles.forEach(btn => {
       btn.classList.remove('active');
       btn.setAttribute('aria-expanded', 'false');
@@ -33,12 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      const list = toggle.parentElement.querySelector('.dropdown-list');
-      const isOpen = list.classList.contains('show');
+      const navLinkLi = toggle.closest('.nav-link');
+      const list = navLinkLi.querySelector('.dropdown-list');
+      const isOpen = navLinkLi.classList.contains('link-open');
 
       closeAllDropdowns();
 
       if (!isOpen) {
+        navLinkLi.classList.add('link-open');
         list.classList.add('show');
         toggle.classList.add('active');
         toggle.setAttribute('aria-expanded', 'true');
