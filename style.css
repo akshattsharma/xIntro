@@ -305,7 +305,13 @@ main {
 
   .overlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    /* Only cover the area NOT occupied by the slide-in nav panel, so this
+       element's own hit-testable area is never obscured by the nav itself
+       (nav panel width matches min(85vw, 340px), see .primary-nav above). */
+    right: min(85vw, 340px);
     background: var(--near-black);
     opacity: 0;
     visibility: hidden;
